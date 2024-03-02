@@ -16,11 +16,11 @@ final class PaletteColor : Codable{
         case red,green,blue
     }
     
-    var red: Double
-    var green: Double
-    var blue: Double
+    var red: Int
+    var green: Int
+    var blue: Int
 
-    init(red: Double, green: Double, blue: Double) {
+    init(red: Int, green: Int, blue: Int) {
         self.red = red
         self.green = green
         self.blue = blue
@@ -28,13 +28,13 @@ final class PaletteColor : Codable{
     
     required init(from decoder: Decoder) throws{
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.red = try container.decode(Double.self, forKey: .red)
-        self.green = try container.decode(Double.self, forKey: .green)
-        self.blue = try container.decode(Double.self, forKey: .blue)
+        self.red = try container.decode(Int.self, forKey: .red)
+        self.green = try container.decode(Int.self, forKey: .green)
+        self.blue = try container.decode(Int.self, forKey: .blue)
     }
     
     var color: Color{
-        Color(red: self.red / 2.56 , green: self.green / 2.56 , blue: self.blue / 2.56 )
+        Color(red: Double(self.red) / 255, green: Double(self.green) / 255, blue: Double(self.blue) / 255)
     }
     
     var rgbCode: String{

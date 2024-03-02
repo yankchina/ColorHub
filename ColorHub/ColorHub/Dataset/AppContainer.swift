@@ -50,7 +50,7 @@ func LoadDatasetFromJSON() throws -> [ColorPalette] {
         {
             var paletteColors = [PaletteColor]()
             for color in colorsArray {
-                if let innerData = color as? [String: Double],
+                if let innerData = color as? [String: Int],
                    let red = innerData["red"],
                    let green = innerData["green"],
                    let blue = innerData["blue"] 
