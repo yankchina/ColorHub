@@ -34,11 +34,11 @@ final class PaletteColor : Codable{
     }
     
     var color: Color{
-        Color(red: red / 256, green: green / 256, blue: blue / 256)
+        Color(red: self.red / 2.56 , green: self.green / 2.56 , blue: self.blue / 2.56 )
     }
     
     var rgbCode: String{
-        "RGB(\(Int(red)),\(Int(green)),\(Int(blue)))"
+        "RGB(\(self.red),\(self.green),\(self.blue))"
     }
     
     func encode(to encoder: Encoder) throws{

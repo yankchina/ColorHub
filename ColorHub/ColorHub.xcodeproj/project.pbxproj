@@ -14,6 +14,7 @@
 		18028B432B905DC50016EBC7 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028B422B905DC50016EBC7 /* ColorPalette.swift */; };
 		18028B472B9062CA0016EBC7 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18028B462B9062CA0016EBC7 /* AppContainer.swift */; };
 		188BD1972B92F2BB007BA3FF /* dataset.json in Resources */ = {isa = PBXBuildFile; fileRef = 188BD1962B92F2BB007BA3FF /* dataset.json */; };
+		188BD1992B92F8F6007BA3FF /* ColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BD1982B92F8F6007BA3FF /* ColorPaletteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		18028B422B905DC50016EBC7 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		18028B462B9062CA0016EBC7 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		188BD1962B92F2BB007BA3FF /* dataset.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dataset.json; sourceTree = "<group>"; };
+		188BD1982B92F8F6007BA3FF /* ColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				18028B332B905C960016EBC7 /* ContentView.swift */,
+				188BD1982B92F8F6007BA3FF /* ColorPaletteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18028B342B905C960016EBC7 /* ContentView.swift in Sources */,
+				188BD1992B92F8F6007BA3FF /* ColorPaletteView.swift in Sources */,
 				18028B472B9062CA0016EBC7 /* AppContainer.swift in Sources */,
 				18028B322B905C960016EBC7 /* ColorHubApp.swift in Sources */,
 				18028B432B905DC50016EBC7 /* ColorPalette.swift in Sources */,
