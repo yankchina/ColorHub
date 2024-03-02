@@ -24,7 +24,6 @@ let appContainer: ModelContainer = {
         for item in colorpalettes{
             container.mainContext.insert( item )
         }
-        print("JSON Loaded")
         return container
     }catch{
         fatalError("Failed to create container")
@@ -42,8 +41,7 @@ func LoadDatasetFromJSON() throws -> [ColorPalette] {
               let topDictionary = data as? [String: Any],
               let itemArray = topDictionary["palettes"] as? [Any] else {
             fatalError("JSONSerialization Fail")
-        }
-    print("JSONSerialization Pass")
+    }
     for item in itemArray{
         if let innerDictionary = item as? [String: Any],
            let name = innerDictionary["name"] as? String,
