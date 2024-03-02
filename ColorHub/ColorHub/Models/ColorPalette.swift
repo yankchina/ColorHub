@@ -26,6 +26,13 @@ final class PaletteColor : Codable{
         self.blue = blue
     }
     
+    required init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.red = try container.decode(Double.self, forKey: .red)
+        self.green = try container.decode(Double.self, forKey: .green)
+        self.blue = try container.decode(Double.self, forKey: .blue)
+    }
+    
     var color: Color{
         Color(red: red / 256, green: green / 256, blue: blue / 256)
     }
@@ -53,9 +60,9 @@ final class ColorPalette :Codable{
     var id: UUID
     var name: String
     var colors: [PaletteColor]
-    var memo: String? = ""
+    var memo: String
     
-    init(name: String, colors: [PaletteColor], memo: String? = nil) {
+    init(name: String, colors: [PaletteColor], memo: String) {
         self.id = UUID()
         self.name = name
         self.colors = colors

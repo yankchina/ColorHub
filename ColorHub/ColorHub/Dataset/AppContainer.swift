@@ -20,13 +20,9 @@ let appContainer: ModelContainer = {
         
         // loading `colorpalletes.json`
         try container.mainContext.delete(model:ColorPalette.self)
-        guard let url = Bundle.main.url(forResource: "colorpalettes", withExtension: "json") else{
-            fatalError("Failed to find json file")
-        }
-        let data = try Data(contentsOf: url)
-        let colorpallettes = try JSONDecoder().decode([ColorPalette].self, from: data)
-        for item in colorpallettes{
-            container.mainContext.insert(item)
+        let colorpalettes = try LoadDatasetFromJSON()
+        for item in colorpalettes{
+            container.mainContext.insert( item )
         }
         print("JSON Loaded")
         return container
@@ -34,3 +30,38 @@ let appContainer: ModelContainer = {
         fatalError("Failed to create container")
     }
 }()
+
+
+func LoadDatasetFromJSON() throws -> [ColorPalette] {
+    var colorpalettes = [ColorPalette]()
+    guard let url = Bundle.main.url(forResource: "dataset", withExtension: "json") else {
+        fatalError("Failed to find dataset.json")
+    }
+    let jsonString = try String(contentsOf: url)
+    guard let data = try? JSONSerialization.jsonObject(with: jsonString.data(using: .utf8)!, options: []),
+              let topDictionary = data as? [String: Any],
+              let itemArray = topDictionary["palettes"] as? [Any] else {
+            fatalError("JSONSerialization Fail")
+        }
+    print("JSONSerialization Pass")
+    for item in itemArray{
+        if let innerDictionary = item as? [String: Any],
+           let name = innerDictionary["name"] as? String,
+           let colorsArray = innerDictionary["colors"] as? [Any],
+           let memo = innerDictionary["memo"] as? String
+        {
+            var paletteColors = [PaletteColor]()
+            for color in colorsArray {
+                if let innerData = color as? [String: Double],
+                   let red = innerData["red"],
+                   let green = innerData["green"],
+                   let blue = innerData["blue"] 
+                {
+                    paletteColors.append(PaletteColor(red: red, green: green, blue: blue))
+                }
+            }
+            colorpalettes.append(ColorPalette(name: name, colors: paletteColors, memo: memo))
+        }
+    }
+    return colorpalettes
+}
